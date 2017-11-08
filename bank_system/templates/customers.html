@@ -1,0 +1,68 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+  <a class="btn btn-success" href="/create_customer">Add customer</a>
+    <hr>
+
+    <table class="table table-stripped">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone Number</th>
+            <th>Address</th>
+            <th>Account Number</th>
+            <th>Account Balance</th>
+            <th>Account type</th>
+            <th>Bank</th>
+            <th></th>
+            <th></th>
+        </tr>
+        {% for custom in customs %}
+            <tr>
+                <td>{{custom[0]}}</td>
+                <td><a href="/customer_self/{{custom[0]}}">{{custom[1]}}</a></td>
+                <td>{{custom[2]}}</td>
+                <td>{{custom[3]}}</td>
+                <td>{{custom[4]}}</td>
+                <td>{{custom[5]}}</td>
+                <td>{{custom[6]}}</td>
+                <td>{{custom[7]}}</td>
+                <td>{{custom[8]}}</td>
+                <td><a class="btn btn-default pull-right" href="/edit_customer/{{custom[0]}}">Edit</a></td>
+                <td>
+                    <form method="POST" action="{{url_for('delete_customer', id=custom[0])}}">
+                        <input type="submit" value="Delete" class="btn btn-danger">
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+        </table>
+
+    <hr>
+    <a href="/create_account" class="btn btn-success">Add Account</a>
+    <hr>
+
+    <table class="table table-stripped">
+        <tr>
+            <th>ID</th>
+            <th>Type of Account</th>
+            <th></th>
+            <th></th>
+        </tr>
+        {% for account in accounts %}
+            <tr>
+                <td>{{account[0]}}</td>
+                <td>{{account[1]}}</td>
+                <td>{{account[2]}}</td>
+                <td><a class="btn btn-default pull-right" href="/edit_account/{{account[0]}}">Edit</a></td>
+                <td>
+                    <form method="POST" action="{{url_for('delete_account', id=account[0])}}">
+                        <input type="submit" value="Delete" class="btn btn-danger">
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+
+{% endblock %}

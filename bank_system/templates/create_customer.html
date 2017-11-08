@@ -1,0 +1,48 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+   <h1>Add Customer</h1>
+    {% from "includes/_formhelpers.html" import render_field %}
+    <form action="/create_customer" method="POST">
+        <div class="form-group">
+            {{ render_field(form.name, class_="form-control") }}
+        </div>
+
+        <div class="form-group">
+            {{ render_field(form.email, class_="form-control") }}
+        </div>
+
+        <div class="form-group">
+            {{ render_field(form.phon_num, class_="form-control") }}
+        </div>
+
+        <div class="form-group">
+            {{ render_field(form.address, class_="form-control") }}
+        </div>
+
+
+        <div class="form-group">
+            {{ render_field(form.acct_num, class_="form-control") }}
+        </div>
+
+      <div class="form-group">
+          <label for="Account type">Account Type</label>
+            <select id="Account type" class="form-control" name="acct_type">
+                {% for type in types %}
+                    <option>{{type[1]}}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="Respective Bank">Respective Bank</label>
+            <select id = "Respective Bank" class="form-control" name="bank_id">
+                {% for bank in banks %}
+                    <option>{{bank[1]}}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <p><input class="btn btn-success" type="submit" value="submit"></p>
+    </form>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+ <a class="btn btn-success" href="/dashboard">Go Back</a>
+    <hr>
+
+    <table class="table table-stripped">
+        <tr>
+            <th>ID</th>
+            <th>Amount</th>
+            <th>Reason</th>
+            <th>Period</th>
+            <th>Status</th>
+            <th>Respective Bank</th>
+            <th>Account id</th>
+            <th></th>
+            <th></th>
+        </tr>
+        {% for loan in loans %}
+            <tr>
+                <td>{{loan[0]}}</td>
+                <td>{{loan[1]}}</td>
+                <td>{{loan[2]}}</td>
+                <td>{{loan[3]}}</td>
+                <td>{{loan[4]}}</td>
+                <td>{{loan[5]}}</td>
+                <td>{{loan[6]}}</td>
+                <td><a class="btn btn-default pull-right" href="/approve_loan/{{loan[0]}}">Accept</a></td>
+                <td>
+                    <form method="POST" action="{{url_for('reject_loan', id=loan[0])}}">
+                        <input type="submit" value="Reject" class="btn btn-danger">
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+        </table>
+{% endblock %}

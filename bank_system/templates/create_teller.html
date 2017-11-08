@@ -1,0 +1,26 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+   <h1>Add Teller</h1>
+    {% from "includes/_formhelpers.html" import render_field %}
+    <form action="/create_teller" method="POST">
+        <div class="form-group">
+            {{ render_field(form.name, class_="form-control") }}
+        </div>
+
+        <div class="form-group">
+            <label for="Specific Bank">Specific Bank</label>
+            <select id="Specific Bank" class="form-control" name="resp_bank">
+                {% for bank in banks %}
+                    <option>{{bank[1]}}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+          <div class="form-group">
+            {{ render_field(form.location, class_="form-control") }}
+        </div>
+
+        <p><input class="btn btn-success" type="submit" value="submit"></p>
+    </form>
+{% endblock %}

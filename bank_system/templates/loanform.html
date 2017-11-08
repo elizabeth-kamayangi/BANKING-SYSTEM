@@ -1,0 +1,22 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+    <h1>Request Loan</h1>
+    {% from "includes/_formhelpers.html" import render_field %}
+    <form action="/apply_for_loan/{{id}}" method="POST">
+        <div class="form-group">
+            {{ render_field(form.amount, class_="form-control") }}
+        </div>
+
+        <div class="form-group">
+            {{ render_field(form.reason, class_="form-control") }}
+        </div>
+
+        <div class="form-group">
+            {{ render_field(form.period, class_="form-control") }}
+        </div>
+
+
+        <p><input class="btn btn-success" type="submit" value="submit"></p>
+    </form>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+    <div class="jumbtron text-center">
+        <h1>Bumble  Banking , Have fun!</h1>
+        <p style="color: #2aabd2;font-size: x-large">
+            Welcome, best you ever had.
+        </p>
+        <table class="table table-stripped">
+            <tr>
+                <th>Bank </th>
+                <th>Location</th>
+            </tr>
+
+            <tr>
+                <td>{% if blosh %}
+                    {{blosh.name}}</td>
+                <td>{{blosh.location}}</td>
+                    {% endif %}
+            <tr>
+        </table>
+    </div>
+{% endblock%}

@@ -1,0 +1,14 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+   <h1>Edit Account</h1>
+    {% from "includes/_formhelpers.html" import render_field %}
+    <form action="/edit_account" method="POST">
+
+        <div class="form-group">
+            {{ render_field(form.acct_type, class_="form-control") }}
+        </div>
+
+        <p><input class="btn btn-success" type="submit" value="submit"></p>
+    </form>
+{% endblock %}

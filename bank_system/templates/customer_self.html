@@ -1,0 +1,37 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<a class="btn btn-success" href="/customers">Go Back</a>
+<hr>
+<div class="container">
+
+    <div class="jumbotron">
+        {% from "includes/_formhelpers.html" import render_field %}
+        <h1>Welcome {{name}}</h1>
+
+
+        <div class="customer_body">
+            <p><span class="heading">Account No: </span>{{acc_no}}</p>
+            <p><span class="heading">Bank: </span>{{bank}}</p>
+            <a class="btn btn-default" href="/request_card/{{id}}" >Request ATM</a>
+        </div>
+        <p><a class="btn btn-info btn-lg" href="#" role="button">Make Inquiry</a></p>
+
+        <div class="content2">
+            <p><span class="heading">Balance: </span>{{acct_bal}}</p>
+            <p><span class="heading">Account type: </span>{{acct_type}}</p>
+            <p><span class="heading">Account status: </span>active</p>
+            <p><span class="">Last Deposit: </span></p>
+        </div>
+
+        <p><a class="btn btn-warning btn-lg" href="/apply_for_loan/{{id}}" role="button">Request Loan</a></p>
+        <form class="form-inline" action="/user_deposit/{{id}}" method="POST">
+
+            <div class="form-group">
+                {{ render_field(form.deposit, class_="form-control") }}
+            </div>
+            <button class="btn btn-success form-control" type="submit">Deposit</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

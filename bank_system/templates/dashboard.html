@@ -1,0 +1,64 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+    <h1>Dashboard <small>Welcome {{session.username}}</small></h1>
+    <!--<a class="btn btn-success" href="/create_bank">Add Bank</a>--><h2>BANKS</h2>
+    <hr>
+
+    <table class="table table-stripped">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>location</th>
+            <th></th>
+            <th></th>
+        </tr>
+        {% for bank in banks %}
+            <tr>
+                <td>{{bank[0]}}</td>
+                <td>{{bank[1]}}</td>
+                <td>{{bank[2]}}</td>
+                <td><a class="btn btn-default pull-right" href="edit_bank/{{bank[0]}}">Edit</a></td>
+                <td>
+                    <form method="POST" action="{{url_for('delete_bank', id=bank[0])}}">
+                        <input type="submit" value="Delete" class="btn btn-danger">
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    <!--<a href="/create_teller" class="btn btn-success">Add Teller</a>--><h2>TELLERS</h2>
+    <hr>
+
+    <table class="table table-stripped">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Respective Bank</th>
+            <th>Location</th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+        {% for teller in tellers %}
+            <tr>
+                <td>{{teller[0]}}</td>
+                <td>{{teller[1]}}</td>
+                <td>{{teller[2]}}</td>
+                <td>{{teller[3]}}</td>
+                <td><a class="btn btn-default pull-right" href="/tellers/{{teller[0]}}">Transact</a></td>
+                <td><a class="btn btn-default pull-right" href="/edit_teller/{{teller[0]}}">Edit</a></td>
+                <td>
+                    <form method="POST" action="{{url_for('delete_teller', id=teller[0])}}">
+                        <input type="submit" value="Delete" class="btn btn-danger">
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+
+        <p><a class="btn btn-info btn-lg" href="/loans" role="button">View Loans</a></p>
+
+
+{% endblock %}

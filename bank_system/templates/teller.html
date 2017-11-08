@@ -1,0 +1,28 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+
+<hr>
+<h1> Teller {{cod}}'s transactions</h1>
+    <hr>
+
+  <a style="align-content: flex-end" class="btn btn-success" href="/customers">Withdraw</a>
+  <a style="align-content: flex-end" class="btn btn-success" href="/customers">Deposit</a>
+    <hr>
+
+    <hr>
+    <a href="/customers" class="btn btn-success">Collect Money</a>
+    <a href="/create_customer" class="btn btn-success">Open Account</a>
+    <a href="/customers" class="btn btn-success">Close Account</a>
+    <a href="/loans" class="btn btn-success">Loan Request</a>
+    <a href="/customers" class="btn btn-success">Provide Info</a>
+    <a href="/customers" class="btn btn-success">Issue Card</a>
+
+   <hr>
+
+    <hr>
+
+
+
+{% endblock %}
